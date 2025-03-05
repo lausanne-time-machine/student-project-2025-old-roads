@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+<input type='range' id='slider1' min=0 max=100><br/>
+<input type='range' id='slider2' min=0 max=100><br/>
+<input type='range' id='slider3' min=0 max=100><br/>
+<input type='range' id='slider4' min=0 max=100>
+<script>
+
+function update1(){
+	if(document.getElementById('slider1').value>document.getElementById('slider2').value){
+		console.log('change');
+		document.getElementById('slider2').value = document.getElementById('slider1').value;
+		update2();
+	}
+}
+document.getElementById('slider1').onchange=update1;
+function update2(){
+	if(document.getElementById('slider2').value>document.getElementById('slider3').value){
+		console.log('change');
+		document.getElementById('slider3').value = document.getElementById('slider2').value;
+		update3();
+	}
+	if(document.getElementById('slider2').value<document.getElementById('slider1').value){
+		console.log('change');
+		document.getElementById('slider1').value = document.getElementById('slider2').value;
+		update1();
+	}
+}
+document.getElementById('slider2').onchange=update2;
+function update3(){
+	if(document.getElementById('slider3').value>document.getElementById('slider4').value){
+		console.log('change');
+		document.getElementById('slider4').value = document.getElementById('slider3').value;
+		update4();
+	}
+	if(document.getElementById('slider3').value<document.getElementById('slider2').value){
+		console.log('change');
+		document.getElementById('slider2').value = document.getElementById('slider3').value;
+		update2();
+	}
+}
+document.getElementById('slider3').onchange=update3;
+function update4(){
+	if(document.getElementById('slider4').value<document.getElementById('slider3').value){
+		console.log('change');
+		document.getElementById('slider3').value = document.getElementById('slider4').value;
+		update3();
+	}
+}
+document.getElementById('slider4').onchange=update4;
+</script>
+</body>
+</html>
