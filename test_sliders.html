@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+div.img-slide{
+	height: 1080px;
+	width: 1920px;
+	position:relative;
+}
+div.img-slide div{
+	height: 1080px;
+	width: 1920px;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+</style>
+</head>
+<body>
+<input type='range' id='slider1' min=0 max=100><br/>
+<input type='range' id='slider2' min=0 max=100><br/>
+<input type='range' id='slider3' min=0 max=100><br/>
+<input type='range' id='slider4' min=0 max=100>
+<div class="img-slide" id="img-slide">
+	<div style='background-image: url(https://wallup.net/wp-content/uploads/2015/12/171017-nature-landscape-waterfall.jpg);'></div>
+	<div style='background-image: url(https://wallpaperaccess.com/full/2425064.jpg);' id='slide4'></div>
+	<div style='background-image: url(https://wallpapercave.com/wp/wp2856747.jpg);' id='slide3'></div>
+	<div style='background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/07/Full-hd-nature-wallpapers-1080p-desktop-1.jpg);' id='slide2'></div>
+	<div style='background-image: url(https://wallpaperaccess.com/full/1089775.jpg);' id='slide1'></div>
+</div>
+<script>
+function update1(){
+	if(Number(document.getElementById('slider1').value)>Number(document.getElementById('slider2').value)){
+		document.getElementById('slider2').value = document.getElementById('slider1').value;
+		update2();
+	}
+	document.getElementById('slide1').style.width=''+(19.2*document.getElementById('slider1').value)+'px';
+}
+document.getElementById('slider1').onchange=update1;
+function update2(){
+	if(Number(document.getElementById('slider2').value)>Number(document.getElementById('slider3').value)){
+		document.getElementById('slider3').value = document.getElementById('slider2').value;
+		update3();
+	}
+	if(Number(document.getElementById('slider2').value)<Number(document.getElementById('slider1').value)){
+		document.getElementById('slider1').value = document.getElementById('slider2').value;
+		update1();
+	}
+	document.getElementById('slide2').style.width=''+(19.2*document.getElementById('slider2').value)+'px';
+}
+document.getElementById('slider2').onchange=update2;
+function update3(){
+	if(Number(document.getElementById('slider3').value)>Number(document.getElementById('slider4').value)){
+		document.getElementById('slider4').value = document.getElementById('slider3').value;
+		update4();
+	}
+	if(Number(document.getElementById('slider3').value)<Number(document.getElementById('slider2').value)){
+		document.getElementById('slider2').value = document.getElementById('slider3').value;
+		update2();
+	}
+	document.getElementById('slide3').style.width=''+(19.2*document.getElementById('slider3').value)+'px';
+}
+document.getElementById('slider3').onchange=update3;
+function update4(){
+	if(Number(document.getElementById('slider4').value)<Number(document.getElementById('slider3').value)){
+		document.getElementById('slider3').value = document.getElementById('slider4').value;
+		update3();
+	}
+	document.getElementById('slide4').style.width=''+(19.2*document.getElementById('slider4').value)+'px';
+}
+document.getElementById('slider4').onchange=update4;
+</script>
+</body>
+</html>
