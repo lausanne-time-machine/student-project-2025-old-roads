@@ -6,15 +6,35 @@ div.img-slide{
 	height: 1080px;
 	width: 1920px;
 	position:relative;
+	overflow:hidden;
 }
-div.img-slide div{
+div.img-slide div.slide{
 	height: 1080px;
 	width: 1920px;
 	position:absolute;
 	top:0px;
 	left:0px;
 }
+.folium-map{
+    z-index: 0;
+}
+div.folium-map{
+    height:100%;
+    width:100%;
+}
 </style>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+<meta name="viewport" content="width=device-width,
+    initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body>
 <input type='range' id='slider1' min=0 max=100><br/>
@@ -22,11 +42,21 @@ div.img-slide div{
 <input type='range' id='slider3' min=0 max=100><br/>
 <input type='range' id='slider4' min=0 max=100>
 <div class="img-slide" id="img-slide">
-	<div style='background-image: url(https://wallup.net/wp-content/uploads/2015/12/171017-nature-landscape-waterfall.jpg);'></div>
-	<div style='background-image: url(https://wallpaperaccess.com/full/2425064.jpg);' id='slide4'></div>
-	<div style='background-image: url(https://wallpapercave.com/wp/wp2856747.jpg);' id='slide3'></div>
-	<div style='background-image: url(https://www.pixelstalk.net/wp-content/uploads/2016/07/Full-hd-nature-wallpapers-1080p-desktop-1.jpg);' id='slide2'></div>
-	<div style='background-image: url(https://wallpaperaccess.com/full/1089775.jpg);' id='slide1'></div>
+	<div class='slide'>
+	    <div class='folium-map' id='map5'></div>
+	</div>
+	<div id='slide4' class='slide'>
+	    <div class='folium-map' id='map4'></div>
+	</div>
+	<div id='slide3' class='slide'>
+	    <div class='folium-map' id='map3'></div>
+	</div>
+	<div id='slide2' class='slide'>
+	    <div class='folium-map' id='map2'></div>
+	</div>
+	<div id='slide1' class='slide'>
+	    <div class='folium-map' id='map1'></div>
+	</div>
 </div>
 <script>
 function update1(){
@@ -69,6 +99,140 @@ function update4(){
 	document.getElementById('slide4').style.width=''+(19.2*document.getElementById('slider4').value)+'px';
 }
 document.getElementById('slider4').onchange=update4;
+
+L_NO_TOUCH = false;
+L_DISABLE_3D = false;
+
+
+var map1 = L.map("map1",{
+	center: [46.813184832, 8.224262465],
+	zoom: 9
+});
+L.control.scale().addTo(map1);
+var tile_layer = L.tileLayer(
+    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+);
+tile_layer.addTo(map1);
+
+var map2 = L.map("map2",{
+	center: [46.813184832, 8.224262465],
+	zoom: 9
+});
+L.control.scale().addTo(map2);
+var tile_layer = L.tileLayer(
+    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+);
+tile_layer.addTo(map2);
+
+var map3 = L.map("map3",{
+	center: [46.813184832, 8.224262465],
+	zoom: 9
+});
+L.control.scale().addTo(map3);
+var tile_layer = L.tileLayer(
+    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+);
+tile_layer.addTo(map3);
+
+var map4 = L.map("map4",{
+	center: [46.813184832, 8.224262465],
+	zoom: 9
+});
+L.control.scale().addTo(map4);
+var tile_layer = L.tileLayer(
+    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+);
+tile_layer.addTo(map4);
+
+var map5 = L.map("map5",{
+	center: [46.813184832, 8.224262465],
+	zoom: 9
+});
+L.control.scale().addTo(map5);
+var tile_layer = L.tileLayer(
+    "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+    {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+);
+tile_layer.addTo(map5);
+
+let moving=0;
+function update_maps(center,zoom,orig){
+    if(orig!==moving) return;
+    if(orig!==1) map1.setView(center,zoom);
+    if(orig!==2) map2.setView(center,zoom);
+    if(orig!==3) map3.setView(center,zoom);
+    if(orig!==4) map4.setView(center,zoom);
+    if(orig!==5) map5.setView(center,zoom);
+}
+map1.addEventListener('zoom',event=>{
+    update_maps(map1.getCenter(),map1.getZoom(),1);
+});
+map1.addEventListener('move',event=>{
+    update_maps(map1.getCenter(),map1.getZoom(),1);
+});
+map1.addEventListener('mousedown',event=>{
+    moving=1;
+});
+document.getElementById('map1').addEventListener('wheel',event=>{
+    moving=1;
+});
+map2.addEventListener('zoom',event=>{
+    update_maps(map2.getCenter(),map2.getZoom(),2);
+});
+map2.addEventListener('move',event=>{
+    update_maps(map2.getCenter(),map2.getZoom(),2);
+});
+map2.addEventListener('mousedown',event=>{
+    moving=2;
+});
+document.getElementById('map2').addEventListener('wheel',event=>{
+    moving=2;
+});
+map3.addEventListener('zoom',event=>{
+    update_maps(map3.getCenter(),map3.getZoom(),3);
+});
+map3.addEventListener('move',event=>{
+    update_maps(map3.getCenter(),map3.getZoom(),3);
+});
+map3.addEventListener('mousedown',event=>{
+    moving=3;
+});
+document.getElementById('map3').addEventListener('wheel',event=>{
+    moving=3;
+});
+map4.addEventListener('zoom',event=>{
+    update_maps(map4.getCenter(),map4.getZoom(),4);
+});
+map4.addEventListener('move',event=>{
+    update_maps(map4.getCenter(),map4.getZoom(),4);
+});
+map4.addEventListener('mousedown',event=>{
+    moving=4;
+});
+document.getElementById('map4').addEventListener('wheel',event=>{
+    moving=4;
+});
+map5.addEventListener('zoom',event=>{
+    update_maps(map5.getCenter(),map5.getZoom(),5);
+});
+map5.addEventListener('move',event=>{
+    update_maps(map5.getCenter(),map5.getZoom(),5);
+});
+map5.addEventListener('mousedown',event=>{
+    moving=5;
+});
+document.getElementById('map5').addEventListener('wheel',event=>{
+    moving=5;
+});
+
+update1();
+update2();
+update3();
+update4();
 </script>
 </body>
 </html>
