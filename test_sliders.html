@@ -2,15 +2,21 @@
 <html>
 <head>
 <style>
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
 div.img-slide{
-	height: 1080px;
-	width: 1920px;
+	height: 100%;
+	width: 100%;
 	position:relative;
 	overflow:hidden;
 }
 div.img-slide div.slide{
-	height: 1080px;
-	width: 1920px;
+	height: 100%;
+	width: 100%;
 	position:absolute;
 	top:0px;
 	left:0px;
@@ -21,6 +27,11 @@ div.img-slide div.slide{
 div.folium-map{
     height:100%;
     width:100%;
+}
+div.overlay{
+    background-color: #fff8;
+    z-index: 1000;
+    pointer-events: auto;
 }
 </style>
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
@@ -37,11 +48,14 @@ div.folium-map{
     initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body>
-<input type='range' id='slider1' min=0 max=100><br/>
-<input type='range' id='slider2' min=0 max=100><br/>
-<input type='range' id='slider3' min=0 max=100><br/>
-<input type='range' id='slider4' min=0 max=100>
+
 <div class="img-slide" id="img-slide">
+    <div class='overlay leaflet-top leaflet-right'>
+        <input type='range' id='slider1' min=0 max=100><br/>
+        <input type='range' id='slider2' min=0 max=100><br/>
+        <input type='range' id='slider3' min=0 max=100><br/>
+        <input type='range' id='slider4' min=0 max=100>
+    </div>
 	<div class='slide'>
 	    <div class='folium-map' id='map5'></div>
 	</div>
@@ -64,7 +78,7 @@ function update1(){
 		document.getElementById('slider2').value = document.getElementById('slider1').value;
 		update2();
 	}
-	document.getElementById('slide1').style.width=''+(19.2*document.getElementById('slider1').value)+'px';
+	document.getElementById('slide1').style.width=''+(document.getElementById('slider1').value)+'%';
 }
 document.getElementById('slider1').onchange=update1;
 function update2(){
@@ -76,7 +90,7 @@ function update2(){
 		document.getElementById('slider1').value = document.getElementById('slider2').value;
 		update1();
 	}
-	document.getElementById('slide2').style.width=''+(19.2*document.getElementById('slider2').value)+'px';
+	document.getElementById('slide2').style.width=''+(document.getElementById('slider2').value)+'%';
 }
 document.getElementById('slider2').onchange=update2;
 function update3(){
@@ -88,7 +102,7 @@ function update3(){
 		document.getElementById('slider2').value = document.getElementById('slider3').value;
 		update2();
 	}
-	document.getElementById('slide3').style.width=''+(19.2*document.getElementById('slider3').value)+'px';
+	document.getElementById('slide3').style.width=''+(document.getElementById('slider3').value)+'%';
 }
 document.getElementById('slider3').onchange=update3;
 function update4(){
@@ -96,7 +110,7 @@ function update4(){
 		document.getElementById('slider3').value = document.getElementById('slider4').value;
 		update3();
 	}
-	document.getElementById('slide4').style.width=''+(19.2*document.getElementById('slider4').value)+'px';
+	document.getElementById('slide4').style.width=''+(document.getElementById('slider4').value)+'%';
 }
 document.getElementById('slider4').onchange=update4;
 
