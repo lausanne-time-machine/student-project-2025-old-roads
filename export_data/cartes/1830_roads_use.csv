@@ -1,0 +1,126 @@
+class,subclass,use,count
+road_network,road_network,None,1121
+non-built,road_network,place,689
+non-built,road_network,cour,284
+road_network,road_network,place,32
+non-built,road_network,"place, passage",20
+road_network,road_network,cour,20
+non-built,road_network,"cour, place",19
+built,road_network,place,16
+built,road_network,cour,12
+non-built,road_network,terrasse,11
+built,road_network,"maison, place",11
+road_network,non_built_agri_low,champ,8
+road_network,non_built_residential,jardin,8
+road_network,road_network,nan,7
+road_network,road_network,"cour, place",6
+built,road_network,"maison, grange, écurie, place",5
+road_network,road_network,"place, passage",4
+road_network,road_network,cabinet,4
+non-built,road_network,"place, cour",4
+road_network,non_built_agri_low,pré,4
+non-built,road_network,place publique,3
+non-built,road_network,"cour, pompe",3
+built,road_network,"place, escalier",3
+non-built,road_network,"cour, basse-cour",3
+built,road_network,"maison, passage public",3
+road_network,non_built_agri_low,pâturage,3
+built,road_network,"place, maison",2
+built,road_network,"maison, escalier",2
+built,road_network,escalier,2
+non-built,road_network,"cour, passage",2
+water,road_network,place,2
+non-built,road_network,"maison, place",2
+non-built,road_network,"galerie, place",2
+non-built,road_network,"couvert, place",2
+non-built,road_network,"place, fontaine",2
+non-built,road_network,"place, bûcher",2
+non-built,road_network,"place, aisances",2
+road_network,road_network,passage,2
+road_network,road_network,bûcher,2
+road_network,road_network,"maison, grange, écurie",2
+road_network,road_network,place publique,2
+road_network,non_built_forestry,buissons,2
+road_network,road_network,chemin,2
+road_network,non_built_forestry,bois,2
+non-built,road_network,"cour, escalier",2
+built,road_network,"maison, grange, écurie, four, place",1
+built,road_network,"escalier, aisances",1
+built,road_network,"escalier, latrines",1
+built,road_network,"four, place",1
+built,road_network,"hangar, place",1
+built,road_network,"hangar, terrasse",1
+built,road_network,"foule, place",1
+built,road_network,"buanderie, étable à porcs, place",1
+built,road_network,"bûcher, terrasse",1
+built,road_network,"bûcher, place",1
+built,road_network,"cave, terrasse",1
+built,road_network,"casino, place",1
+built,road_network,"cour, maison",1
+built,road_network,"couvert, place",1
+built,road_network,"allee, maison",1
+built,road_network,"allee, escalier",1
+non-built,road_network,"cour, place, bûcher",1
+non-built,road_network,"cour, place, basse-cour",1
+non-built,road_network,"cour, passage, place",1
+non-built,road_network,"cour, maison",1
+non-built,road_network,"cour, galerie, cave",1
+non-built,road_network,"cour, galerie, escalier",1
+non-built,road_network,"cour, buanderie",1
+non-built,road_network,"cour, fosse d'aisances",1
+non-built,road_network,"aisances, place",1
+non-built,road_network,"bûcher, place",1
+non-built,road_network,"buanderie, place",1
+built,road_network,"place, bûcher",1
+built,road_network,"place, logement",1
+built,road_network,"remise, place",1
+built,road_network,"terrasse, teinture",1
+built,road_network,"tour, escalier",1
+built,road_network,"maison, passage, place",1
+built,road_network,"maison, remise, place",1
+built,road_network,"maison, écurie, place",1
+built,road_network,passage public,1
+built,road_network,"moulin à écorce, place",1
+built,road_network,"place, hangar",1
+built,road_network,"grange, écurie, place",1
+built,road_network,"grange, écurie, remise, place",1
+built,road_network,"maison, 1/2 grange, 1/2 écurie, remise, four, place",1
+built,road_network,"maison, 1/2 grange, 1/2 écurie, place",1
+built,road_network,"maison, cour",1
+built,road_network,"maison, allee, passage",1
+built,road_network,"maison, couvert, place",1
+built,road_network,"maison, forge, place",1
+built,road_network,"maison, grange, place, écurie",1
+non-built,road_network,"glacière, terrasse",1
+road_network,non_built_agri_high,vigne,1
+road_network,non_built_agri_high,vignes,1
+non-built,road_network,"teinture, place",1
+non-built,road_network,"étable à porcs, place",1
+non-built,road_network,"place, sortie",1
+non-built,road_network,"place, hangar",1
+non-built,road_network,"place, maison",1
+non-built,road_network,"place, puits",1
+non-built,road_network,"place, chemin",1
+non-built,road_network,"escalier, allee",1
+non-built,road_network,escalier,1
+non-built,road_network,"cour, remise",1
+non-built,road_network,"maison, passage, place",1
+non-built,road_network,"maison, grange, écurie, place",1
+non-built,road_network,"hangar, place",1
+non-built,road_network,passage public,1
+non-built,road_network,"cour, places",1
+road_network,road_network,"cour, maison",1
+road_network,road_network,devestiture,1
+road_network,road_network,cimetière,1
+road_network,road_network,avenue,1
+road_network,road_network,bûchers,1
+road_network,road_network,"cour, bûcher, dépendance",1
+road_network,road_network,maison,1
+road_network,road_network,"place, cour",1
+road_network,road_network,"grange, écurie",1
+road_network,road_network,remise,1
+road_network,road_network,"place, grange?",1
+road_network,road_network,terrasse,1
+road_network,road_network,tour soit porte de st maire,1
+road_network,road_network,"écurie, bûcher",1
+road_network,road_network,étable à porcs,1
