@@ -127,6 +127,12 @@ var tile_layer = L.tileLayer(
     "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
 );
+fetch('notebooks/roads_1975_wgs84.geojson').then(resp=>{
+    resp.json().then(geojson=>{
+        var geojson_layer = L.geoJSON(geojson);
+        geojson_layer.addTo(map1);
+    });
+});
 tile_layer.addTo(map1);
 
 var map2 = L.map("map2",{
@@ -138,6 +144,12 @@ var tile_layer = L.tileLayer(
     "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
 );
+fetch('notebooks/roads_2025_wgs84.geojson').then(resp=>{
+    resp.json().then(geojson=>{
+        var geojson_layer = L.geoJSON(geojson);
+        geojson_layer.addTo(map2);
+    });
+});
 tile_layer.addTo(map2);
 
 var map3 = L.map("map3",{
@@ -149,6 +161,12 @@ var tile_layer = L.tileLayer(
     "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
 );
+fetch('notebooks/roads_1975_wgs84.geojson').then(resp=>{
+    resp.json().then(geojson=>{
+        var geojson_layer = L.geoJSON(geojson);
+        geojson_layer.addTo(map3);
+    });
+});
 tile_layer.addTo(map3);
 
 var map4 = L.map("map4",{
@@ -161,6 +179,12 @@ var tile_layer = L.tileLayer(
     {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
 );
 tile_layer.addTo(map4);
+fetch('notebooks/roads_2025_wgs84.geojson').then(resp=>{
+    resp.json().then(geojson=>{
+        var geojson_layer = L.geoJSON(geojson);
+        geojson_layer.addTo(map4);
+    });
+});
 
 var map5 = L.map("map5",{
 	center: [46.813184832, 8.224262465],
@@ -171,6 +195,12 @@ var tile_layer = L.tileLayer(
     "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
     {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
 );
+fetch('notebooks/roads_1975_wgs84.geojson').then(resp=>{
+    resp.json().then(geojson=>{
+        var geojson_layer = L.geoJSON(geojson);
+        geojson_layer.addTo(map5);
+    });
+});
 tile_layer.addTo(map5);
 
 let moving=0;
