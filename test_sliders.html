@@ -119,8 +119,8 @@ L_DISABLE_3D = false;
 
 
 var map1 = L.map("map1",{
-	center: [46.813184832, 8.224262465],
-	zoom: 9
+	center: [46.5276975, 6.630272],
+	zoom: 14
 });
 L.control.scale().addTo(map1);
 var tile_layer = L.tileLayer(
@@ -136,8 +136,8 @@ fetch('notebooks/roads_1975_wgs84.geojson').then(resp=>{
 tile_layer.addTo(map1);
 
 var map2 = L.map("map2",{
-	center: [46.813184832, 8.224262465],
-	zoom: 9
+	center: [46.5276975, 6.630272],
+	zoom: 14
 });
 L.control.scale().addTo(map2);
 var tile_layer = L.tileLayer(
@@ -153,8 +153,8 @@ fetch('notebooks/roads_2025_wgs84.geojson').then(resp=>{
 tile_layer.addTo(map2);
 
 var map3 = L.map("map3",{
-	center: [46.813184832, 8.224262465],
-	zoom: 9
+	center: [46.5276975, 6.630272],
+	zoom: 14
 });
 L.control.scale().addTo(map3);
 var tile_layer = L.tileLayer(
@@ -170,8 +170,8 @@ fetch('notebooks/roads_1975_wgs84.geojson').then(resp=>{
 tile_layer.addTo(map3);
 
 var map4 = L.map("map4",{
-	center: [46.813184832, 8.224262465],
-	zoom: 9
+	center: [46.5276975, 6.630272],
+	zoom: 14
 });
 L.control.scale().addTo(map4);
 var tile_layer = L.tileLayer(
@@ -187,8 +187,8 @@ fetch('notebooks/roads_2025_wgs84.geojson').then(resp=>{
 });
 
 var map5 = L.map("map5",{
-	center: [46.813184832, 8.224262465],
-	zoom: 9
+	center: [46.5276975, 6.630272],
+	zoom: 14
 });
 L.control.scale().addTo(map5);
 var tile_layer = L.tileLayer(
@@ -277,6 +277,29 @@ update1();
 update2();
 update3();
 update4();
+
+const delay = ms => new Promise(res => setTimeout(res, ms));
+async function recenter_maps(){
+    console.log("start recentring within 0.1s");
+    await delay(100);
+    console.log("start recentring");
+    document.getElementById('slide1').style.width='100%';
+    document.getElementById('slide2').style.width='100%';
+    document.getElementById('slide3').style.width='100%';
+    document.getElementById('slide4').style.width='100%';
+    map1.invalidateSize();
+    map2.invalidateSize();
+    map3.invalidateSize();
+    map4.invalidateSize();
+    moving=5;
+    update_maps(map5.getCenter(),map5.getZoom(),5);
+    update1();
+    update2();
+    update3();
+    update4();
+}
+
+window.onresize = recenter_maps
 </script>
 </body>
 </html>
