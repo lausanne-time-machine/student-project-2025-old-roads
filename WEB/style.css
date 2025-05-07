@@ -1,0 +1,72 @@
+html, body{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+div.img-slide{
+	height: 100%;
+	width: 100%;
+	position:relative;
+	overflow:hidden;
+}
+div.img-slide div.slide{
+	height: 100%;
+	width: 100%;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+.folium-map{
+    z-index: 0;
+}
+div.folium-map{
+    height:100%;
+    width:100%;
+}
+div.overlay{
+    background-color: #fff8;
+    z-index: 1000;
+    pointer-events: auto;
+}
+.full-width{
+    width: 100%;
+}
+div.slider{
+    position: absolute;
+    height: 100%;
+    width: 10px;
+    background-color: #3338;
+    z-index: 1
+}
+div.handle{
+    height:3em;
+    width:3em;
+    border-radius:1.5em;
+    margin-top:-1.5em;
+    background-color: black;
+    position: absolute;
+    z-index: 2;
+    color: white;
+    text-align: center;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+div.year_indicator{
+    font-size: 2em;
+    position: absolute;
+    top: 5px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: 4em;
+    text-align: center;
+    margin-left: -2em;
+    z-index: 1;
+    background-color: white;
+    border: 2px;
+    border-radius: 0.5em;
+    border-style: solid;
+    border-color: magenta;
+}
