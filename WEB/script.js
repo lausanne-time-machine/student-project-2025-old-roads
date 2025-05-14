@@ -1,6 +1,6 @@
-var pos_1=0.5
+var pos_1=0.25
 var pos_2=0.5
-var pos_3=0.5
+var pos_3=0.75
 var sliding=0
 function update1(){
 	if(pos_1>pos_2){
