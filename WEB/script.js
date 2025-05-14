@@ -279,11 +279,16 @@ async function recenter_maps(){
     map1.invalidateSize();
     map2.invalidateSize();
     map3.invalidateSize();
-    moving=5;
-    update_maps(map5.getCenter(),map5.getZoom(),5);
+    moving=4;
+    update_maps(map4.getCenter(),map4.getZoom(),4);
     update1();
     update2();
     update3();
 }
 
 window.onresize = recenter_maps
+
+function reset_map(){
+    moving=5;
+    update_maps([46.5276975, 6.630272],21,5);
+}
