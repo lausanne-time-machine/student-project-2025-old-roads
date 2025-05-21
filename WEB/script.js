@@ -293,7 +293,7 @@ function reset_map(){
 }
 
 const ICONS = {
-    1925 : L.icon({'iconUrl':'icon1925.png'}),
+    1928 : L.icon({'iconUrl':'icon1928.png'}),
     1975 : L.icon({'iconUrl':'icon1975.png'}),
     2025 : L.icon({'iconUrl':'icon2025.png'})
 }
