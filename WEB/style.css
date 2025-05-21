@@ -114,3 +114,17 @@ div.year_indicator{
     border-style: solid;
     border-color: magenta;
 }
+
+div#popup{
+    position: absolute;
+    z-index: 3;
+    display: none;
+    top : 70%;
+    overflow : scroll;
+    left : 10%;
+    right : 10%;
+    bottom : 0;
+    background-color : white;
+    border-radius: 25px;
+    padding : 20px;
+}

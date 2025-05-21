@@ -94,7 +94,6 @@ for(let i=1;i<=3;i++){
 
 document.addEventListener('mousemove', (e) => {
     if (sliding>0) {
-        console.log(sliding)
         set_update_i(sliding,e.clientX/window.screen.availWidth)
     }
 });
@@ -292,3 +291,29 @@ function reset_map(){
     moving=5;
     update_maps([46.5276975, 6.630272],21,5);
 }
+
+const ICONS = {
+    1925 : L.icon({'iconUrl':'icon1925.png'}),
+    1975 : L.icon({'iconUrl':'icon1975.png'}),
+    2025 : L.icon({'iconUrl':'icon2025.png'})
+}
+
+function show_description(title,description){
+    document.getElementById('popup_title').innerText=title;
+    document.getElementById('popup_info').innerHTML=description;
+    document.getElementById('popup').style.display='block';
+}
+
+fetch('data.json').then(response => {
+    response.json().then(points => {
+        points.forEach(point => {
+            function on_click(){
+                show_description(point.title,point.description);
+            }
+            marker1 = L.marker([point.latitude,point.longitude],{'icon':ICONS[point.year]}).addTo(map1).on('click',on_click);
+            marker2 = L.marker([point.latitude,point.longitude],{'icon':ICONS[point.year]}).addTo(map2).on('click',on_click);
+            marker3 = L.marker([point.latitude,point.longitude],{'icon':ICONS[point.year]}).addTo(map3).on('click',on_click);
+            marker4 = L.marker([point.latitude,point.longitude],{'icon':ICONS[point.year]}).addTo(map4).on('click',on_click);
+        });
+    });
+});
