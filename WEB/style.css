@@ -119,12 +119,66 @@ div#popup{
     position: absolute;
     z-index: 3;
     display: none;
-    top : 70%;
     overflow : scroll;
     left : 10%;
     right : 10%;
-    bottom : 0;
     background-color : white;
     border-radius: 25px;
     padding : 20px;
+}
+
+div#popup_header{
+    display: flex;
+    flex-direction : row;
+    justify-content : space-between;
+}
+div#popup_buttons{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+}
+div#popup_buttons button{
+    background-color: white;
+    margin: 0 4pt;
+}
+.croix {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    border:none;
+}
+
+.croix::before,
+.croix::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 11px;
+    width: 3px;
+    height: 25px;
+    background-color: pink;
+}
+
+.croix::before {
+    transform: rotate(45deg);
+}
+
+.croix::after {
+    transform: rotate(-45deg);
+}
+.fleche-haut, .fleche-bas{
+    width: 0;
+    height: 0;
+    padding: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+}
+
+.fleche-haut {
+    border-top: none;
+    border-bottom: 10px solid pink;
+}
+.fleche-bas {
+    border-bottom: none;
+    border-top: 10px solid pink;
 }

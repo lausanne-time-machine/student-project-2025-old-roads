@@ -22,11 +22,11 @@
     <div class='slider' id='slider1'></div>
     <div class='slider' id='slider2'></div>
     <div class='slider' id='slider3'></div>
-    <div class='handle' id='handle1' style='top: 25%'>1875 1925</div>
-    <div class='handle' id='handle2' style='top: 50%'>1925 1975</div>
+    <div class='handle' id='handle1' style='top: 25%'>1875 1928</div>
+    <div class='handle' id='handle2' style='top: 50%'>1928 1975</div>
     <div class='handle' id='handle3' style='top: 75%'>1975 2025</div>
     <div class='year_indicator' id='year1875'>1875</div>
-    <div class='year_indicator' id='year1925'>1925</div>
+    <div class='year_indicator' id='year1928'>1928</div>
     <div class='year_indicator' id='year1975'>1975</div>
     <div class='year_indicator' id='year2025'>2025</div>
 	<div class='slide'>
@@ -52,7 +52,13 @@
     <button onclick='reset_map()'>Home</button>
 </div>
 <div id='popup'>
-    <h2 id='popup_title'></h2>
+    <div id="popup_header">
+        <h2 id='popup_title'></h2>
+        <div id="popup_buttons">
+            <button id='popup_button_resize' class='fleche-haut'></button>
+            <button id='popup_button_close' class='croix'></button>
+        </div>
+    </div>
     <div id='popup_info'></div>
 </div>
 <script src='script.js'></script>

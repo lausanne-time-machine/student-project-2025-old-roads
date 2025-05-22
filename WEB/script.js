@@ -17,10 +17,10 @@ function update1(){
 	    document.getElementById('year1875').style.display='none';
 	}
 	if(pos_2-pos_1>0.05){
-	    document.getElementById('year1925').style.display='block';
-	    document.getElementById('year1925').style.left=''+((pos_2+pos_1)*50)+'%';
+	    document.getElementById('year1928').style.display='block';
+	    document.getElementById('year1928').style.left=''+((pos_2+pos_1)*50)+'%';
 	}else{
-	    document.getElementById('year1925').style.display='none';
+	    document.getElementById('year1928').style.display='none';
 	}
 }
 function update2(){
@@ -36,10 +36,10 @@ function update2(){
 	document.getElementById('slider2').style.left='calc('+(pos_2*100)+'% - 5px)';
 	document.getElementById('handle2').style.left='calc('+(pos_2*100)+'% - 1.5em)';
     if(pos_2-pos_1>0.05){
-	    document.getElementById('year1925').style.display='block';
-	    document.getElementById('year1925').style.left=''+((pos_2+pos_1)*50)+'%';
+	    document.getElementById('year1928').style.display='block';
+	    document.getElementById('year1928').style.left=''+((pos_2+pos_1)*50)+'%';
 	}else{
-	    document.getElementById('year1925').style.display='none';
+	    document.getElementById('year1928').style.display='none';
 	}
 	if(pos_3-pos_2>0.05){
 	    document.getElementById('year1975').style.display='block';
@@ -135,7 +135,7 @@ var options = {
     format: "png",
     layer: "ch.swisstopo.zeitreihen",
     maxNativeZoom: 26,
-    timestamp: "19251231",
+    timestamp: "19281231",
     opacity: 1
 };
 
@@ -301,6 +301,7 @@ const ICONS = {
 function show_description(title,description){
     document.getElementById('popup_title').innerText=title;
     document.getElementById('popup_info').innerHTML=description;
+    reduce_popup();
     document.getElementById('popup').style.display='block';
 }
 
@@ -317,3 +318,34 @@ fetch('data.json').then(response => {
         });
     });
 });
+
+var popup_is_enlarged=false;
+
+function enlarge_popup(){
+    popup_is_enlarged=true;
+    document.getElementById('popup').style.top='20%';
+    document.getElementById('popup').style.bottom='10%';
+    document.getElementById('popup_button_resize').className='fleche-bas';
+}
+function reduce_popup(){
+    popup_is_enlarged=false;
+    document.getElementById('popup').style.top='70%';
+    document.getElementById('popup').style.bottom='0';
+    document.getElementById('popup_button_resize').className='fleche-haut';
+}
+function toggle_popup_size(){
+    if(popup_is_enlarged){
+        reduce_popup();
+    }else{
+        enlarge_popup();
+    }
+}
+function hide_popup(){
+    reduce_popup();
+    document.getElementById('popup').style.display='none';
+}
+
+
+document.getElementById('popup').onscroll=enlarge_popup;
+document.getElementById('popup_button_resize').onclick=toggle_popup_size;
+document.getElementById('popup_button_close').onclick=hide_popup;
