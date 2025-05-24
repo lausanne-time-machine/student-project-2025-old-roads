@@ -324,7 +324,7 @@ var popup_is_enlarged=false;
 function enlarge_popup(){
     popup_is_enlarged=true;
     document.getElementById('popup').style.top='20%';
-    document.getElementById('popup').style.bottom='10%';
+    //document.getElementById('popup').style.bottom='10%';
     document.getElementById('popup_button_resize').className='fleche-bas';
 }
 function reduce_popup(){
