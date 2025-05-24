@@ -120,12 +120,20 @@ const road_style = {
     "color": "#4A051C",
     "weight": "2"
 }
-var road_status = False
-/*
-function toggle_roads(){
-    if road_status:
+var road_status = true
 
-}*/
+function toggle_roads(){
+    if (road_status) {
+        road_layers.forEach(layer => {layer.remove();});
+        road_status = false;
+    } else {
+        road_layers[0].addTo(map1);
+        road_layers[1].addTo(map2);
+        road_layers[2].addTo(map3);
+        road_layers[3].addTo(map4);
+        road_status = true;
+    }
+}
 
 var map1 = L.map("map1", {
     crs: L.CRS.EPSG2056,
