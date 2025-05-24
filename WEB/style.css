@@ -144,6 +144,7 @@ div#popup_header{
     display: flex;
     flex-direction : row;
     justify-content : space-between;
+    margin-bottom: 10px;
 }
 div#popup_buttons{
     display:flex;
@@ -167,6 +168,16 @@ div#popup_info img {
 div#popup_info .galery {
     display: flex;
 
+}
+blockquote {
+    font: 14px/20px italic Times, serif;
+    padding: 8px;
+    border-top: 1px solid #e1cc89;
+    border-bottom: 1px solid #e1cc89;
+    margin: 5px;
+    background:  top left no-repeat url(images/openquote1.gif), bottom right no-repeat url(images/closequote1.gif), #faebbc;
+    text-indent: 23px;
+    width: calc(60% - 1em);
 }
 
 .croix {
