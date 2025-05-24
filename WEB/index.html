@@ -17,7 +17,7 @@
     <title>Old Roads - Le saviez-vous?</title>
 </head>
 <body>
-<h1>Old Roads</h1>
+<h1 onclick='document.getElementById("welcome").style.display="block"'>Old Roads</h1>
 <div class="img-slide" id="img-slide">
     <div class='slider' id='slider1'></div>
     <div class='slider' id='slider2'></div>
@@ -48,8 +48,8 @@
     <button onclick='document.getElementById("welcome").style.display="none"'>Fermer</button>
 </div>
 <div id='buttons'>
-    <button onclick='document.getElementById("welcome").style.display="block"'>i</button>
-    <button onclick='reset_map()'>Home</button>
+    <button title="Afficher l'aide" onclick='document.getElementById("welcome").style.display="block"'>i</button>
+    <button title="Revenir au point de départ" onclick='reset_map()'>&#127968</button>
 </div>
 <div id='popup'>
     <div id="popup_header">

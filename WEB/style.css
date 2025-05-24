@@ -26,6 +26,7 @@ body h1{
     background-color: #E8E9F3;
     color:  #2E2E3A;
     font-family: EagleLake;
+    cursor: pointer;
 }
 div#buttons{
     position: absolute;
@@ -107,12 +108,24 @@ div.year_indicator{
     width: 4em;
     text-align: center;
     margin-left: -2em;
-    z-index: 1;
+    z-index: 1; 
+    border-radius: 0.35em;/*
     background-color: white;
     border: 2px;
-    border-radius: 0.5em;
     border-style: solid;
-    border-color: magenta;
+    border-color: magenta;*/
+}
+div#year1875{
+    background-color: #CEEAF7;
+}
+div#year1928{
+    background-color: #F0CF65;
+}
+div#year1975{
+    background-color: #65B8A8;
+}
+div#year2025{
+    background-color: #BC5D2E;
 }
 
 div#popup{
