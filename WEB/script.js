@@ -115,6 +115,17 @@ var options = {
 };
 
 var layers = [ L.tileLayer.swiss(options)];
+const road_layers = [];
+const road_style = {
+    "color": "#4A051C",
+    "weight": "2"
+}
+var road_status = False
+/*
+function toggle_roads(){
+    if road_status:
+
+}*/
 
 var map1 = L.map("map1", {
     crs: L.CRS.EPSG2056,
@@ -124,10 +135,11 @@ var map1 = L.map("map1", {
 });
 L.control.scale().addTo(map1);
 
-fetch('../notebooks/roads_1975_wgs84.geojson').then(resp=>{
+fetch('roads/roads_1875_wgs84.geojson').then(resp=>{
     resp.json().then(geojson=>{
-        var geojson_layer = L.geoJSON(geojson);
+        var geojson_layer = L.geoJSON(geojson, {style: road_style});
         geojson_layer.addTo(map1);
+        road_layers.push(geojson_layer);
     });
 });
 
@@ -149,10 +161,11 @@ var map2 = L.map("map2", {
 });
 L.control.scale().addTo(map2);
 
-fetch('../notebooks/roads_2025_wgs84.geojson').then(resp=>{
+fetch('roads/roads_1928_wgs84.geojson').then(resp=>{
     resp.json().then(geojson=>{
-        var geojson_layer = L.geoJSON(geojson);
+        var geojson_layer = L.geoJSON(geojson, {style: road_style});
         geojson_layer.addTo(map2);
+        road_layers.push(geojson_layer);
     });
 });
 
@@ -174,10 +187,11 @@ var map3 = L.map("map3", {
 });
 L.control.scale().addTo(map3);
 
-fetch('../notebooks/roads_1975_wgs84.geojson').then(resp=>{
+fetch('roads/roads_1975_wgs84.geojson').then(resp=>{
     resp.json().then(geojson=>{
-        var geojson_layer = L.geoJSON(geojson);
+        var geojson_layer = L.geoJSON(geojson, {style: road_style});
         geojson_layer.addTo(map3);
+        road_layers.push(geojson_layer);
     });
 });
 
@@ -199,10 +213,11 @@ var map4 = L.map("map4", {
 });
 L.control.scale().addTo(map4);
 
-fetch('../notebooks/roads_2025_wgs84.geojson').then(resp=>{
+fetch('roads/roads_2025_wgs84.geojson').then(resp=>{
     resp.json().then(geojson=>{
-        var geojson_layer = L.geoJSON(geojson);
+        var geojson_layer = L.geoJSON(geojson, {style: road_style});
         geojson_layer.addTo(map4);
+        road_layers.push(geojson_layer);
     });
 });
 
