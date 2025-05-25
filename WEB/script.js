@@ -3,6 +3,9 @@ var pos_2=0.5
 var pos_3=0.75
 var sliding=0
 function update1(){
+    if(pos_1<0){
+        pos_1=0;
+    }
 	if(pos_1>pos_2){
 		pos_2=pos_1;
 		update2();
@@ -49,6 +52,9 @@ function update2(){
 	}
 }
 function update3(){
+    if(pos_3>1){
+        pos_3=1;
+    }
 	if(pos_3<pos_2){
 		pos_2=pos_3;
 		update2();
@@ -94,7 +100,7 @@ for(let i=1;i<=3;i++){
 
 document.addEventListener('mousemove', (e) => {
     if (sliding>0) {
-        set_update_i(sliding,e.clientX/window.screen.availWidth)
+        set_update_i(sliding,e.clientX/document.body.clientWidth)
     }
 });
 
