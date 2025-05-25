@@ -185,6 +185,7 @@ div#popup_header{
     flex-direction : row;
     justify-content : space-between;
     margin-bottom: 10px;
+    font-family: EagleLake;
 }
 div#popup_buttons{
     display:flex;
