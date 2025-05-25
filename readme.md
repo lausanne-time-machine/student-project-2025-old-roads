@@ -22,8 +22,9 @@ Pour comprendre les dynamiques d’évolution de Lausanne par son réseau viaire
 
 Nous avons sélectionné quatre années d’études en fonction des cartes à notre disposition: **1875, 1928, 1975** et **2025\.** Ces années permettent également d’avoir des périodes de transition avec une durée similaire d’environ cinquante ans à chaque fois. Ces cartes ont ensuite été retravaillées avec QGIS afin d’en vectoriser les routes:
 
-- 2025: carte déjà vectorisée disponible sur SwissTopo **(???)**  
-- 1975: création des routes vectorisées à partir de celles de 2025 et d’un fond de carte de 1975 en supprimant les routes n’y apparaissant pas
+- 2025: carte déjà vectorisée produite par SwissTopo.
+- 1975: création des routes vectorisées à partir de celles de 2025 et d’un fond de carte de 1975 en supprimant les routes n’y apparaissant pas.
+- 1928 et 1875: recopiage des routes depuis les fonds de cartes historiques. 
 
 Ces données ont ensuite été exportées au format **GeoJSON**, ce qui nous a permis de les analyser à l’aide d’outils numériques: Python et sa librairie GeoPandas.
 
