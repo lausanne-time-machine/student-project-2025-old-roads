@@ -47,14 +47,23 @@ div#buttons button{
 }
 div#buttons button#route {
     background: no-repeat center/100% url(route.svg);
+    background-color: white;
+    filter: invert(70%);
+}
+div#buttons button#densite {
+    background: no-repeat center/100% url(densite.svg);
+    background-color: white;
+}
+div#buttons button#map_toggle {
+    filter: invert(90%);
 }
 
 div#welcome{
     position: absolute;
     top: 20%;
-    bottom: 20%;
-    left: 20%;
-    right: 20%;
+    bottom: auto;
+    left: 15%;
+    right: 15%;
     padding: 20px;
     border-radius: 15px;
     background-color: white;
@@ -65,9 +74,16 @@ div#welcome h2 {
     font-family: EagleLake;
     margin-bottom: 1em;
 }
+div#welcome h4, div#welcome strong {
+    font-family: EagleLake;
+    margin-bottom: 0.5em;
+}
 div#welcome p {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     text-align: justify;
+}
+div#welcome em {
+    font-family: EagleLake;
 }
 div#welcome button{
     background-color: #BC5D2E;

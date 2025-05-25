@@ -44,7 +44,14 @@
 </div>
 <div id='welcome'>
     <h2>Bienvenue sur Old Roads</h2>
-    <p>Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. Texte d'exemple. </p>
+
+    <h4>Explorer Lausanne à travers le temps : une ville en mutation</h4>
+    <p>Bienvenue sur notre plateforme interactive dédiée à l’étude historique de Lausanne par son réseau viaire. Ce site vous invite à plonger dans l’évolution urbaine de la ville à travers plus d’un siècle et demi de transformations, grâce à une série de cartes anciennes et contemporaines.</p>
+    <h4>Quel a été l’impact de l’urbanisation sur le territoire lausannois ? Où et quand les grands changements se sont-ils produits ?</h4>
+    <p>Pour répondre à ces questions, nous avons analysé le réseau de voirie de Lausanne en quatre temps-clés : 1875, 1928, 1975 et 2025. En découpant la ville en une mosaïque de zones (ou <em>patches</em>), nous avons mesuré la densité des routes à chaque époque et identifié les zones ayant connu les évolutions les plus marquantes dans ce domaine.</p>
+    <p>Le site propose une visualisation intuitive : des <em>sliders temporels</em> vous permettent de comparer dynamiquement les cartes de nos différentes années d’études, révélant instantanément les transformations du tissu urbain. Des <em>points d'information interactifs</em>, codés par couleur selon la période de transition (<img src="icon1928.png" height="20px"/> 1875 - 1928, <img src="icon1975.png" height="20px"/> 1928 - 1975, <img src="icon2025.png" height="20px"/> 1975 - 2025), signalent les zones de mutation majeure. En cliquant sur ces points, vous accédez à des fiches descriptives détaillant les changements observés et leur contexte historique.</p>
+    <p><strong>Notre objectif ? </strong> Offrir un outil pédagogique et visuel pour comprendre comment Lausanne s’est développée, s’est étendue, et s’est structurée à travers ses routes. Ce projet mêle analyse spatiale, histoire urbaine et visualisation numérique pour vous faire redécouvrir la ville autrement.</p>
+    <p>Explorez, comparez, découvrez : <em>Lausanne n’a jamais cessé de changer… alors suivez ses traces !</em></p>
     <button onclick='document.getElementById("welcome").style.display="none"'>Fermer</button>
     <button style='background-color: #65B8A8;' href="https://github.com/oldroadsltm25/OLD_ROADS_SHS">Notre méthodologie</button>
 </div>
@@ -52,7 +59,8 @@
     <button title="Afficher l'aide" onclick='document.getElementById("welcome").style.display="block"'>i</button>
     <button title="Revenir au point de départ" onclick='reset_map()'>&#127968</button>
     <button id='route' title="Afficher / masquer les traits des routes" onclick='toggle_roads()'></button>
-    <button title="Afficher / masquer le fond de carte" onclick='reset_map()'>&#128506</button>
+    <button id='densite' title="Afficher / masquer l'évolution de la densité des routes" onclick='toggle_density()'></button>
+    <button id='map_toggle' title="Régler l'opacité du fond de carte" onclick='toggle_map()'>&#128506</button>
 </div>
 <div id='popup'>
     <div id="popup_header">
