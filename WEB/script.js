@@ -404,21 +404,31 @@ const SLIDER = {
     2025 : 3,
 }
 
-async function show_description(point){
-    document.getElementById('popup_title').innerText=point.title;
-    document.getElementById('popup_info').innerHTML=point.description;
-    reduce_popup();
-    document.getElementById('popup').style.display='block';
-
-    map1.panTo([point.latitude,point.longitude], 22, {noMoveStart: true, duration: 0});
-    map2.panTo([point.latitude,point.longitude], 22, {noMoveStart: true, duration: 0});
-    map3.panTo([point.latitude,point.longitude], 22, {noMoveStart: true, duration: 0});
-    map4.panTo([point.latitude,point.longitude], 22, {noMoveStart: true, duration: 0});
+function move_map_for_point(point){
+    map1.panTo([point.latitude,point.longitude],23, {noMoveStart: true, duration: 0});
+    map2.panTo([point.latitude,point.longitude],23, {noMoveStart: true, duration: 0});
+    map3.panTo([point.latitude,point.longitude],23, {noMoveStart: true, duration: 0});
+    map4.panTo([point.latitude,point.longitude],23, {noMoveStart: true, duration: 0});
 
     let i = SLIDER[point.year];
     set_update_i(i-1, 0.049);
     set_update_i(i, 0.5);
     set_update_i(i+1, 0.967);
+
+    popup_is_enlarged=false;
+    document.getElementById('popup').style.top='90%';
+    document.getElementById('popup').style.bottom='0';
+    document.getElementById('popup_button_resize').className='fleche-haut';
+}
+function show_description(point){
+    function on_click(){
+        move_map_for_point(point);
+    }
+    document.getElementById('popup_title').innerText=point.title;
+    document.getElementById('popup_info').innerHTML=point.description;
+    document.getElementById('popup_button_move_map').addEventListener("click", on_click);
+    reduce_popup();
+    document.getElementById('popup').style.display='block';
 }
 
 fetch('data.json').then(response => {

@@ -262,3 +262,10 @@ blockquote {
     border-bottom: none;
     border-top: 10px solid pink;
 }
+
+.move_map {
+    border: none;
+    background: no-repeat center url(icon_rose.png);
+    width: 25px;
+    height: 25px;
+}
