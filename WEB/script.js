@@ -398,18 +398,34 @@ const ICONS = {
     2025 : L.icon({'iconUrl':'icon2025.png'})
 }
 
-function show_description(title,description){
-    document.getElementById('popup_title').innerText=title;
-    document.getElementById('popup_info').innerHTML=description;
+const SLIDER = {
+    1928 : 1,
+    1975 : 2,
+    2025 : 3,
+}
+
+async function show_description(point){
+    document.getElementById('popup_title').innerText=point.title;
+    document.getElementById('popup_info').innerHTML=point.description;
     reduce_popup();
     document.getElementById('popup').style.display='block';
+
+    map1.panTo([point.latitude,point.longitude], 22, {noMoveStart: true, duration: 0});
+    map2.panTo([point.latitude,point.longitude], 22, {noMoveStart: true, duration: 0});
+    map3.panTo([point.latitude,point.longitude], 22, {noMoveStart: true, duration: 0});
+    map4.panTo([point.latitude,point.longitude], 22, {noMoveStart: true, duration: 0});
+
+    let i = SLIDER[point.year];
+    set_update_i(i-1, 0.049);
+    set_update_i(i, 0.5);
+    set_update_i(i+1, 0.967);
 }
 
 fetch('data.json').then(response => {
     response.json().then(points => {
         points.forEach(point => {
             function on_click(){
-                show_description(point.title,point.description);
+                show_description(point);
             }
             marker1 = L.marker([point.latitude,point.longitude],{'icon':ICONS[point.year]}).addTo(map1).on('click',on_click);
             marker2 = L.marker([point.latitude,point.longitude],{'icon':ICONS[point.year]}).addTo(map2).on('click',on_click);
