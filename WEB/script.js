@@ -429,6 +429,13 @@ function show_description(point){
     document.getElementById('popup_button_move_map').addEventListener("click", on_click);
     reduce_popup();
     document.getElementById('popup').style.display='block';
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    map1.panInside([point.latitude,point.longitude], {paddingTopLeft : [width *0.2, height *0.1], paddingBottomRight: [width *0.2, height *0.4]});
+    map2.panInside([point.latitude,point.longitude], {paddingTopLeft : [width *0.2, height *0.1], paddingBottomRight: [width *0.2, height *0.4]});
+    map3.panInside([point.latitude,point.longitude], {paddingTopLeft : [width *0.2, height *0.1], paddingBottomRight: [width *0.2, height *0.4]});
+    map4.panInside([point.latitude,point.longitude], {paddingTopLeft : [width *0.2, height *0.1], paddingBottomRight: [width *0.2, height *0.4]});
 }
 
 fetch('data.json').then(response => {
