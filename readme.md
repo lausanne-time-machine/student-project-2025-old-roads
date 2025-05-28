@@ -13,6 +13,7 @@ Le site propose une visualisation intuitive : des **sliders temporels** vous per
 
 Explorez, comparez, découvrez : **Lausanne n’a jamais cessé de changer… alors suivez ses traces \!**
 
+[C'est parti !](https://projects.lausannetimemachine.ch/student-project-2025-old-roads/)
 
 
 
@@ -39,3 +40,7 @@ Nous avons ensuite identifié les **zones de changement majeur** en repérant le
 Ces zones ont fait l’objet d’un examen historique plus approfondi. Nous avons croisé les résultats de notre analyse spatiale avec des sources historiques (cartes anciennes, archives, documents urbanistiques, articles de presse) pour comprendre le contexte et les raisons des transformations observées : développements résidentiels, créations d’axes routiers majeurs, extensions urbaines.
 
 Enfin, toutes ces informations ont été intégrées dans notre plateforme interactive. Les cartes comparatives permettent de visualiser directement les transformations, tandis que des **points d’information** indiquent les zones de changement significatif, avec un **code couleur** correspondant à la période concernée. Chaque point donne accès à une **fiche descriptive** retraçant l’évolution du secteur au fil du temps.
+
+## Présentation
+
+[Notre présentation](Presentation_finale.pdf)
