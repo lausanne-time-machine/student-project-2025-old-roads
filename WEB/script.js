@@ -309,13 +309,13 @@ function toggle_density_incr(){
 const densities_layers = [];
 densities_style = {
     opacity: 0,
-    color: "red",
+    color: "blue",
 };
 
 fetch('densities/density_1875_wgs84_n30.geojson').then(resp=>{
     resp.json().then(geojson => {
         var geojson_layer = L.geoJSON(geojson, {
-            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.036066608822823476});},
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.05});},
             style: densities_style
         });
         densities_layers.push(geojson_layer);
@@ -325,7 +325,7 @@ fetch('densities/density_1875_wgs84_n30.geojson').then(resp=>{
 fetch('densities/density_1928_wgs84_n30.geojson').then(resp=>{
     resp.json().then(geojson => {
         var geojson_layer = L.geoJSON(geojson, {
-            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.03299214648698071});},
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.05});},
             style: densities_style
         });
         densities_layers.push(geojson_layer);
@@ -335,7 +335,7 @@ fetch('densities/density_1928_wgs84_n30.geojson').then(resp=>{
 fetch('densities/density_1975_wgs84_n30.geojson').then(resp=>{
     resp.json().then(geojson => {
         var geojson_layer = L.geoJSON(geojson, {
-            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.03299214648698071});},
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.05});},
             style: densities_style
         });
         densities_layers.push(geojson_layer);
@@ -345,7 +345,7 @@ fetch('densities/density_1975_wgs84_n30.geojson').then(resp=>{
 fetch('densities/density_2025_wgs84_n30.geojson').then(resp=>{
     resp.json().then(geojson => {
         var geojson_layer = L.geoJSON(geojson, {
-            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.03299214648698071});},
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.05});},
             style: densities_style
         });
         densities_layers.push(geojson_layer);
