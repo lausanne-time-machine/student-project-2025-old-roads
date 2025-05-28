@@ -426,6 +426,11 @@ function show_description(point){
     }
     document.getElementById('popup_title').innerText=point.title;
     document.getElementById('popup_info').innerHTML=point.description;
+    Array.from(document.getElementById('popup_info').getElementsByTagName('img')).forEach(element=>{
+        element.onclick=()=>{
+            element.classList.toggle("active");
+        }
+    });
     document.getElementById('popup_button_move_map').addEventListener("click", on_click);
     reduce_popup();
     document.getElementById('popup').style.display='block';
@@ -457,7 +462,6 @@ var popup_is_enlarged=false;
 function enlarge_popup(){
     popup_is_enlarged=true;
     document.getElementById('popup').style.top='20%';
-    //document.getElementById('popup').style.bottom='10%';
     document.getElementById('popup_button_resize').className='fleche-bas';
 }
 function reduce_popup(){
