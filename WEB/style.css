@@ -54,6 +54,10 @@ div#buttons button#densite {
     background: no-repeat center/100% url(densite.svg);
     background-color: white;
 }
+div#buttons button#densite_incr {
+    background: no-repeat center/100% url(densite_incr.svg);
+    background-color: white;
+}
 div#buttons button#map_toggle {
     filter: invert(90%);
 }

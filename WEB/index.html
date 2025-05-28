@@ -1,79 +1,103 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' href='style.css'>
     <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-tilelayer-swiss@2.3.0/dist/Leaflet.TileLayer.Swiss.umd.js"></script>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <script
+        src="https://cdn.jsdelivr.net/npm/leaflet-tilelayer-swiss@2.3.0/dist/Leaflet.TileLayer.Swiss.umd.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <title>Old Roads - Le saviez-vous?</title>
 </head>
-<body>
-<h1 onclick='document.getElementById("welcome").style.display="block"'>Old Roads - Le saviez-vous?</h1>
-<div class="img-slide" id="img-slide">
-    <div class='slider' id='slider1'></div>
-    <div class='slider' id='slider2'></div>
-    <div class='slider' id='slider3'></div>
-    <div class='handle' id='handle1' style='top: 25%'>1875 1928</div>
-    <div class='handle' id='handle2' style='top: 50%'>1928 1975</div>
-    <div class='handle' id='handle3' style='top: 75%'>1975 2025</div>
-    <div class='year_indicator' id='year1875'>1875</div>
-    <div class='year_indicator' id='year1928'>1928</div>
-    <div class='year_indicator' id='year1975'>1975</div>
-    <div class='year_indicator' id='year2025'>2025</div>
-	<div class='slide'>
-	    <div class='folium-map' id='map4'></div>
-	</div>
-	<div id='slide3' class='slide'>
-	    <div class='folium-map' id='map3'></div>
-	</div>
-	<div id='slide2' class='slide'>
-	    <div class='folium-map' id='map2'></div>
-	</div>
-	<div id='slide1' class='slide'>
-	    <div class='folium-map' id='map1'></div>
-	</div>
-</div>
-<div id='welcome'>
-    <h2>Bienvenue sur Old Roads</h2>
 
-    <h4>Explorer Lausanne à travers le temps : une ville en mutation</h4>
-    <p>Bienvenue sur notre plateforme interactive dédiée à l’étude historique de Lausanne par son réseau viaire. Ce site vous invite à plonger dans l’évolution urbaine de la ville à travers plus d’un siècle et demi de transformations, grâce à une série de cartes anciennes et contemporaines.</p>
-    <h4>Quel a été l’impact de l’urbanisation sur le territoire lausannois ? Où et quand les grands changements se sont-ils produits ?</h4>
-    <p>Pour répondre à ces questions, nous avons analysé le réseau de voirie de Lausanne en quatre temps-clés : 1875, 1928, 1975 et 2025. En découpant la ville en une mosaïque de zones (ou <em>patches</em>), nous avons mesuré la densité des routes à chaque époque et identifié les zones ayant connu les évolutions les plus marquantes dans ce domaine.</p>
-    <p>Le site propose une visualisation intuitive : des <em>sliders temporels</em> vous permettent de comparer dynamiquement les cartes de nos différentes années d’études, révélant instantanément les transformations du tissu urbain. Des <em>points d'information interactifs</em>, codés par couleur selon la période de transition (<img src="icon1928.png" height="20px"/> 1875 - 1928, <img src="icon1975.png" height="20px"/> 1928 - 1975, <img src="icon2025.png" height="20px"/> 1975 - 2025), signalent les zones de mutation majeure. En cliquant sur ces points, vous accédez à des fiches descriptives détaillant les changements observés et leur contexte historique.</p>
-    <p><strong>Notre objectif ? </strong> Offrir un outil pédagogique et visuel pour comprendre comment Lausanne s’est développée, s’est étendue, et s’est structurée à travers ses routes. Ce projet mêle analyse spatiale, histoire urbaine et visualisation numérique pour vous faire redécouvrir la ville autrement.</p>
-    <p>Explorez, comparez, découvrez : <em>Lausanne n’a jamais cessé de changer… alors suivez ses traces !</em></p>
-    <button onclick='document.getElementById("welcome").style.display="none"'>C'est parti !</button>
-    <button style='background-color: #65B8A8;'  onclick="location.href='https://github.com/lausanne-time-machine/student-project-2025-old-roads';">Notre méthodologie</button>
-</div>
-<div id='buttons'>
-    <button title="Afficher l'aide" onclick='document.getElementById("welcome").style.display="block"'>i</button>
-    <button title="Revenir au point de départ" onclick='reset_map()'>&#127968</button>
-    <button id='route' title="Afficher / masquer les traits des routes" onclick='toggle_roads()'></button>
-    <button id='densite' title="Afficher / masquer l'évolution de la densité des routes" onclick='toggle_density()'></button>
-    <button id='map_toggle' title="Régler l'opacité du fond de carte" onclick='toggle_map()'>&#128506</button>
-</div>
-<div id='popup'>
-    <div id="popup_header">
-        <h2 id='popup_title'></h2>
-        <div id="popup_buttons">
-            <button id='popup_button_move_map' title="Centrer la carte sur ce changement" class='move_map'></button>
-            <button id='popup_button_resize' class='fleche-haut'></button>
-            <button id='popup_button_close' class='croix'></button>
+<body>
+    <h1 onclick='document.getElementById("welcome").style.display="block"'>Old Roads - Le saviez-vous?</h1>
+    <div class="img-slide" id="img-slide">
+        <div class='slider' id='slider1'></div>
+        <div class='slider' id='slider2'></div>
+        <div class='slider' id='slider3'></div>
+        <div class='handle' id='handle1' style='top: 25%'>1875 1928</div>
+        <div class='handle' id='handle2' style='top: 50%'>1928 1975</div>
+        <div class='handle' id='handle3' style='top: 75%'>1975 2025</div>
+        <div class='year_indicator' id='year1875'>1875</div>
+        <div class='year_indicator' id='year1928'>1928</div>
+        <div class='year_indicator' id='year1975'>1975</div>
+        <div class='year_indicator' id='year2025'>2025</div>
+        <div class='slide'>
+            <div class='folium-map' id='map4'></div>
+        </div>
+        <div id='slide3' class='slide'>
+            <div class='folium-map' id='map3'></div>
+        </div>
+        <div id='slide2' class='slide'>
+            <div class='folium-map' id='map2'></div>
+        </div>
+        <div id='slide1' class='slide'>
+            <div class='folium-map' id='map1'></div>
         </div>
     </div>
-    <div id='popup_info'></div>
-</div>
-<script src='script.js'></script>
+    <div id='welcome'>
+        <h2>Bienvenue sur Old Roads</h2>
+
+        <h4>Explorer Lausanne à travers le temps : une ville en mutation</h4>
+        <p>Bienvenue sur notre plateforme interactive dédiée à l’étude historique de Lausanne par son réseau viaire. Ce
+            site vous invite à plonger dans l’évolution urbaine de la ville à travers plus d’un siècle et demi de
+            transformations, grâce à une série de cartes anciennes et contemporaines.</p>
+        <h4>Quel a été l’impact de l’urbanisation sur le territoire lausannois ? Où et quand les grands changements se
+            sont-ils produits ?</h4>
+        <p>Pour répondre à ces questions, nous avons analysé le réseau de voirie de Lausanne en quatre temps-clés :
+            1875, 1928, 1975 et 2025. En découpant la ville en une mosaïque de zones (ou <em>patches</em>), nous avons
+            mesuré la densité des routes à chaque époque et identifié les zones ayant connu les évolutions les plus
+            marquantes dans ce domaine.</p>
+        <p>Le site propose une visualisation intuitive : des <em>sliders temporels</em> vous permettent de comparer
+            dynamiquement les cartes de nos différentes années d’études, révélant instantanément les transformations du
+            tissu urbain. Des <em>points d'information interactifs</em>, codés par couleur selon la période de
+            transition (<img src="icon1928.png" height="20px" /> 1875 - 1928, <img src="icon1975.png" height="20px" />
+            1928 - 1975, <img src="icon2025.png" height="20px" /> 1975 - 2025), signalent les zones de mutation majeure.
+            En cliquant sur ces points, vous accédez à des fiches descriptives détaillant les changements observés et
+            leur contexte historique.</p>
+        <p><strong>Notre objectif ? </strong> Offrir un outil pédagogique et visuel pour comprendre comment Lausanne
+            s’est développée, s’est étendue, et s’est structurée à travers ses routes. Ce projet mêle analyse spatiale,
+            histoire urbaine et visualisation numérique pour vous faire redécouvrir la ville autrement.</p>
+        <p>Explorez, comparez, découvrez : <em>Lausanne n’a jamais cessé de changer… alors suivez ses traces !</em></p>
+        <button onclick='document.getElementById("welcome").style.display="none"'>C'est parti !</button>
+        <button style='background-color: #65B8A8;'
+            onclick="location.href='https://github.com/lausanne-time-machine/student-project-2025-old-roads';">Notre
+            méthodologie</button>
+    </div>
+    <div id='buttons'>
+        <button title="Afficher l'aide" onclick='document.getElementById("welcome").style.display="block"'>i</button>
+        <button title="Revenir au point de départ" onclick='reset_map()'>&#127968</button>
+        <button id='route' title="Afficher / masquer les traits des routes" onclick='toggle_roads()'></button>
+        <button id='densite' title="Afficher / masquer la densité des routes" onclick='toggle_density()'></button>
+        <button id='densite_incr' title="Afficher / masquer l'augmentation de la densité des routes" onclick='toggle_density_incr()'></button>
+        <button id='map_toggle' title="Régler l'opacité du fond de carte" onclick='toggle_map()'>&#128506</button>
+    </div>
+    <div id='popup'>
+        <div id="popup_header">
+            <h2 id='popup_title'></h2>
+            <div id="popup_buttons">
+                <button id='popup_button_move_map' title="Centrer la carte sur ce changement" class='move_map'></button>
+                <button id='popup_button_resize' class='fleche-haut'></button>
+                <button id='popup_button_close' class='croix'></button>
+            </div>
+        </div>
+        <div id='popup_info'></div>
+    </div>
+    <script src='script.js'></script>
 </body>
+
 </html>

@@ -256,8 +256,8 @@ function toggle_map(){
     document.getElementById("map_toggle").style.filter = "invert("+ invert_level +"%)";
 }
 
-const densities_layers = [];
-densities_style = {
+const densities_incr_layers = [];
+densities_incr_style = {
     opacity: 0,
     color: "red",
 };
@@ -266,9 +266,9 @@ fetch('densities/density_incr_1875_to_1928_wgs84_n30.geojson').then(resp=>{
     resp.json().then(geojson => {
         var geojson_layer = L.geoJSON(geojson, {
             onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["1875_to_1928"]/0.036066608822823476});},
-            style: densities_style
+            style: densities_incr_style
         });
-        densities_layers.push(geojson_layer);
+        densities_incr_layers.push(geojson_layer);
     });
 });
 
@@ -276,9 +276,9 @@ fetch('densities/density_incr_1928_to_1975_wgs84_n30.geojson').then(resp=>{
     resp.json().then(geojson => {
         var geojson_layer = L.geoJSON(geojson, {
             onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["1928_to_1975"]/0.03299214648698071});},
-            style: densities_style
+            style: densities_incr_style
         });
-        densities_layers.push(geojson_layer);
+        densities_incr_layers.push(geojson_layer);
     });
 });
 
@@ -286,6 +286,66 @@ fetch('densities/density_incr_1975_to_2025_wgs84_n30.geojson').then(resp=>{
     resp.json().then(geojson => {
         var geojson_layer = L.geoJSON(geojson, {
             onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["1975_to_2025"]/0.03299214648698071});},
+            style: densities_incr_style
+        });
+        densities_incr_layers.push(geojson_layer);
+    });
+});
+
+var density_incr_status = false
+function toggle_density_incr(){
+    density_incr_status = !density_incr_status;
+    if (density_incr_status) {
+        densities_incr_layers[0].addTo(map2);
+        densities_incr_layers[1].addTo(map3);
+        densities_incr_layers[2].addTo(map4);
+        document.getElementById("densite_incr").style.filter = "invert(70%)";
+    } else {
+        densities_incr_layers.forEach(layer => {layer.remove();});
+        document.getElementById("densite_incr").style.filter = "invert(0%)";
+    }
+}
+
+const densities_layers = [];
+densities_style = {
+    opacity: 0,
+    color: "red",
+};
+
+fetch('densities/density_1875_wgs84_n30.geojson').then(resp=>{
+    resp.json().then(geojson => {
+        var geojson_layer = L.geoJSON(geojson, {
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.036066608822823476});},
+            style: densities_style
+        });
+        densities_layers.push(geojson_layer);
+    });
+});
+
+fetch('densities/density_1928_wgs84_n30.geojson').then(resp=>{
+    resp.json().then(geojson => {
+        var geojson_layer = L.geoJSON(geojson, {
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.03299214648698071});},
+            style: densities_style
+        });
+        densities_layers.push(geojson_layer);
+    });
+});
+
+fetch('densities/density_1975_wgs84_n30.geojson').then(resp=>{
+    resp.json().then(geojson => {
+        var geojson_layer = L.geoJSON(geojson, {
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.03299214648698071});},
+            style: densities_style
+        });
+        densities_layers.push(geojson_layer);
+    });
+});
+
+fetch('densities/density_2025_wgs84_n30.geojson').then(resp=>{
+    resp.json().then(geojson => {
+        var geojson_layer = L.geoJSON(geojson, {
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["road_density_length"]/0.03299214648698071});},
             style: densities_style
         });
         densities_layers.push(geojson_layer);
@@ -296,15 +356,18 @@ var density_status = false
 function toggle_density(){
     density_status = !density_status;
     if (density_status) {
-        densities_layers[0].addTo(map2);
-        densities_layers[1].addTo(map3);
-        densities_layers[2].addTo(map4);
+        densities_layers[0].addTo(map1);
+        densities_layers[1].addTo(map2);
+        densities_layers[2].addTo(map3);
+        densities_layers[3].addTo(map4);
         document.getElementById("densite").style.filter = "invert(70%)";
     } else {
         densities_layers.forEach(layer => {layer.remove();});
         document.getElementById("densite").style.filter = "invert(0%)";
     }
 }
+
+
 
 let moving=0;
 function update_maps(center,zoom,orig){
