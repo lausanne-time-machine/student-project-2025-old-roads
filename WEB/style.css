@@ -206,6 +206,10 @@ div#popup_info img {
     border-radius: 15px;
     margin : 0 0 1em 1em;
 }
+div#popup_info img:active{
+    width: 90%;
+}
+
 div#popup_info .galery {
     display: flex;
 
