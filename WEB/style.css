@@ -26,12 +26,15 @@ body h1{
     background-color: #E8E9F3;
     color:  #2E2E3A;
     font-family: EagleLake;
+    cursor: pointer;
 }
 div#buttons{
     position: absolute;
     top:20px;
     left:15px;
     font-family: EagleLake;
+    display: flex;
+    align-items: center;
 }
 div#buttons button{
     height:40px;
@@ -40,18 +43,56 @@ div#buttons button{
     background-color: white;
     border-color: black;
     border:none;
+    margin-left: 5px;
 }
+div#buttons button#route {
+    background: no-repeat center/100% url(route.svg);
+    background-color: white;
+    filter: invert(70%);
+}
+div#buttons button#densite {
+    background: no-repeat center/100% url(densite.svg);
+    background-color: white;
+}
+div#buttons button#map_toggle {
+    filter: invert(90%);
+}
+
 div#welcome{
     position: absolute;
     top: 20%;
-    bottom: 20%;
-    left: 20%;
-    right: 20%;
+    bottom: auto;
+    left: 15%;
+    right: 15%;
     padding: 20px;
-    border-radius: 25px;
+    border-radius: 15px;
     background-color: white;
     z-index: 2;
     box-shadow: 0px 0px 10px 5px;
+}
+div#welcome h2 {
+    font-family: EagleLake;
+    margin-bottom: 1em;
+}
+div#welcome h4, div#welcome strong {
+    font-family: EagleLake;
+    margin-bottom: 0.5em;
+}
+div#welcome p {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: justify;
+}
+div#welcome em {
+    font-family: EagleLake;
+}
+div#welcome button{
+    background-color: #BC5D2E;
+    color: white;
+    border: none;
+    border-radius: 0.5em;
+    padding: 0.5em 1em;
+    font-family: EagleLake;
+    margin-top: 1em;
 }
 div.img-slide div.slide{
 	height: 100%;
@@ -107,12 +148,24 @@ div.year_indicator{
     width: 4em;
     text-align: center;
     margin-left: -2em;
-    z-index: 1;
+    z-index: 1; 
+    border-radius: 0.35em;/*
     background-color: white;
     border: 2px;
-    border-radius: 0.5em;
     border-style: solid;
-    border-color: magenta;
+    border-color: magenta;*/
+}
+div#year1875{
+    background-color: #CEEAF7;
+}
+div#year1928{
+    background-color: #F0CF65;
+}
+div#year1975{
+    background-color: #65B8A8;
+}
+div#year2025{
+    background-color: #BC5D2E;
 }
 
 div#popup{
@@ -123,7 +176,7 @@ div#popup{
     left : 10%;
     right : 10%;
     background-color : white;
-    border-radius: 25px;
+    border-radius: 10px 10px 0px 0px;
     padding : 20px;
 }
 
@@ -131,6 +184,8 @@ div#popup_header{
     display: flex;
     flex-direction : row;
     justify-content : space-between;
+    margin-bottom: 10px;
+    font-family: EagleLake;
 }
 div#popup_buttons{
     display:flex;
@@ -141,6 +196,31 @@ div#popup_buttons button{
     background-color: white;
     margin: 0 4pt;
 }
+div#popup_info {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    text-align: justify;
+}
+div#popup_info img {
+    float : right;
+    width: 40%;
+    border-radius: 15px;
+    margin : 0 0 1em 1em;
+}
+div#popup_info .galery {
+    display: flex;
+
+}
+blockquote {
+    font: 14px/20px italic Times, serif;
+    padding: 8px;
+    border-top: 1px solid #e1cc89;
+    border-bottom: 1px solid #e1cc89;
+    margin: 5px;
+    background:  top left no-repeat url(images/openquote1.gif), bottom right no-repeat url(images/closequote1.gif), #faebbc;
+    text-indent: 23px;
+    width: calc(60% - 1em);
+}
+
 .croix {
     position: relative;
     width: 25px;
@@ -181,4 +261,11 @@ div#popup_buttons button{
 .fleche-bas {
     border-bottom: none;
     border-top: 10px solid pink;
+}
+
+.move_map {
+    border: none;
+    background: no-repeat center url(icon_rose.png);
+    width: 25px;
+    height: 25px;
 }

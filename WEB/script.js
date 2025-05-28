@@ -3,6 +3,9 @@ var pos_2=0.5
 var pos_3=0.75
 var sliding=0
 function update1(){
+    if(pos_1<0){
+        pos_1=0;
+    }
 	if(pos_1>pos_2){
 		pos_2=pos_1;
 		update2();
@@ -49,6 +52,9 @@ function update2(){
 	}
 }
 function update3(){
+    if(pos_3>1){
+        pos_3=1;
+    }
 	if(pos_3<pos_2){
 		pos_2=pos_3;
 		update2();
@@ -94,7 +100,7 @@ for(let i=1;i<=3;i++){
 
 document.addEventListener('mousemove', (e) => {
     if (sliding>0) {
-        set_update_i(sliding,e.clientX/window.screen.availWidth)
+        set_update_i(sliding,e.clientX/document.body.clientWidth)
     }
 });
 
@@ -114,7 +120,29 @@ var options = {
     opacity: 1
 };
 
-var layers = [ L.tileLayer.swiss(options)];
+var layer1 = L.tileLayer.swiss(options);
+var layers = [layer1];
+const road_layers = [];
+const road_style = {
+    "color": "#4A051C",
+    "weight": "2"
+}
+var road_status = true
+
+function toggle_roads(){
+    if (road_status) {
+        road_layers.forEach(layer => {layer.remove();});
+        road_status = false;
+        document.getElementById("route").style.filter = "invert(0%)";
+        } else {
+        road_layers[0].addTo(map1);
+        road_layers[1].addTo(map2);
+        road_layers[2].addTo(map3);
+        road_layers[3].addTo(map4);
+        road_status = true;
+        document.getElementById("route").style.filter = "invert(70%)";
+        }
+}
 
 var map1 = L.map("map1", {
     crs: L.CRS.EPSG2056,
@@ -124,10 +152,11 @@ var map1 = L.map("map1", {
 });
 L.control.scale().addTo(map1);
 
-fetch('../notebooks/roads_1975_wgs84.geojson').then(resp=>{
+fetch('roads/roads_1875_wgs84.geojson').then(resp=>{
     resp.json().then(geojson=>{
-        var geojson_layer = L.geoJSON(geojson);
+        var geojson_layer = L.geoJSON(geojson, {style: road_style});
         geojson_layer.addTo(map1);
+        road_layers.push(geojson_layer);
     });
 });
 
@@ -139,7 +168,8 @@ var options = {
     opacity: 1
 };
 
-var layers = [ L.tileLayer.swiss(options)];
+var layer2 = L.tileLayer.swiss(options);
+var layers = [layer2];
 
 var map2 = L.map("map2", {
     crs: L.CRS.EPSG2056,
@@ -149,10 +179,11 @@ var map2 = L.map("map2", {
 });
 L.control.scale().addTo(map2);
 
-fetch('../notebooks/roads_2025_wgs84.geojson').then(resp=>{
+fetch('roads/roads_1928_wgs84.geojson').then(resp=>{
     resp.json().then(geojson=>{
-        var geojson_layer = L.geoJSON(geojson);
+        var geojson_layer = L.geoJSON(geojson, {style: road_style});
         geojson_layer.addTo(map2);
+        road_layers.push(geojson_layer);
     });
 });
 
@@ -164,7 +195,8 @@ var options = {
     opacity: 1
 };
 
-var layers = [ L.tileLayer.swiss(options)];
+var layer3 = L.tileLayer.swiss(options);
+var layers = [layer3];
 
 var map3 = L.map("map3", {
     crs: L.CRS.EPSG2056,
@@ -174,10 +206,11 @@ var map3 = L.map("map3", {
 });
 L.control.scale().addTo(map3);
 
-fetch('../notebooks/roads_1975_wgs84.geojson').then(resp=>{
+fetch('roads/roads_1975_wgs84.geojson').then(resp=>{
     resp.json().then(geojson=>{
-        var geojson_layer = L.geoJSON(geojson);
+        var geojson_layer = L.geoJSON(geojson, {style: road_style});
         geojson_layer.addTo(map3);
+        road_layers.push(geojson_layer);
     });
 });
 
@@ -189,7 +222,8 @@ var options = {
     opacity: 1
 };
 
-var layers = [ L.tileLayer.swiss(options)];
+var layer4 = L.tileLayer.swiss(options);
+var layers = [layer4];
 
 var map4 = L.map("map4", {
     crs: L.CRS.EPSG2056,
@@ -199,12 +233,78 @@ var map4 = L.map("map4", {
 });
 L.control.scale().addTo(map4);
 
-fetch('../notebooks/roads_2025_wgs84.geojson').then(resp=>{
+fetch('roads/roads_2025_wgs84.geojson').then(resp=>{
     resp.json().then(geojson=>{
-        var geojson_layer = L.geoJSON(geojson);
+        var geojson_layer = L.geoJSON(geojson, {style: road_style});
         geojson_layer.addTo(map4);
+        road_layers.push(geojson_layer);
     });
 });
+
+var current_map_level = 2;
+function toggle_map(){
+    current_map_level += 1;
+    if (current_map_level>2){
+        current_map_level = 0
+    }
+    let opacity = current_map_level * 0.33 + 0.33;
+    layer1.setOpacity(opacity);
+    layer2.setOpacity(opacity);
+    layer3.setOpacity(opacity);
+    layer4.setOpacity(opacity);
+    let invert_level = 30+30*current_map_level;
+    document.getElementById("map_toggle").style.filter = "invert("+ invert_level +"%)";
+}
+
+const densities_layers = [];
+densities_style = {
+    opacity: 0,
+    color: "red",
+};
+
+fetch('densities/density_incr_1875_to_1928_wgs84_n30.geojson').then(resp=>{
+    resp.json().then(geojson => {
+        var geojson_layer = L.geoJSON(geojson, {
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["1875_to_1928"]/0.036066608822823476});},
+            style: densities_style
+        });
+        densities_layers.push(geojson_layer);
+    });
+});
+
+fetch('densities/density_incr_1928_to_1975_wgs84_n30.geojson').then(resp=>{
+    resp.json().then(geojson => {
+        var geojson_layer = L.geoJSON(geojson, {
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["1928_to_1975"]/0.03299214648698071});},
+            style: densities_style
+        });
+        densities_layers.push(geojson_layer);
+    });
+});
+
+fetch('densities/density_incr_1975_to_2025_wgs84_n30.geojson').then(resp=>{
+    resp.json().then(geojson => {
+        var geojson_layer = L.geoJSON(geojson, {
+            onEachFeature: (feature, layer) => {layer.setStyle({fillOpacity: feature.properties["1975_to_2025"]/0.03299214648698071});},
+            style: densities_style
+        });
+        densities_layers.push(geojson_layer);
+    });
+});
+
+var density_status = false
+function toggle_density(){
+    density_status = !density_status;
+    if (density_status) {
+        densities_layers[0].addTo(map2);
+        densities_layers[1].addTo(map3);
+        densities_layers[2].addTo(map4);
+        document.getElementById("densite").style.filter = "invert(70%)";
+    } else {
+        densities_layers.forEach(layer => {layer.remove();});
+        document.getElementById("densite").style.filter = "invert(0%)";
+    }
+}
 
 let moving=0;
 function update_maps(center,zoom,orig){
@@ -298,18 +398,51 @@ const ICONS = {
     2025 : L.icon({'iconUrl':'icon2025.png'})
 }
 
-function show_description(title,description){
-    document.getElementById('popup_title').innerText=title;
-    document.getElementById('popup_info').innerHTML=description;
+const SLIDER = {
+    1928 : 1,
+    1975 : 2,
+    2025 : 3,
+}
+
+function move_map_for_point(point){
+    map1.panTo([point.latitude,point.longitude],23, {noMoveStart: true, duration: 0});
+    map2.panTo([point.latitude,point.longitude],23, {noMoveStart: true, duration: 0});
+    map3.panTo([point.latitude,point.longitude],23, {noMoveStart: true, duration: 0});
+    map4.panTo([point.latitude,point.longitude],23, {noMoveStart: true, duration: 0});
+
+    let i = SLIDER[point.year];
+    set_update_i(i-1, 0.049);
+    set_update_i(i, 0.5);
+    set_update_i(i+1, 0.967);
+
+    popup_is_enlarged=false;
+    document.getElementById('popup').style.top='90%';
+    document.getElementById('popup').style.bottom='0';
+    document.getElementById('popup_button_resize').className='fleche-haut';
+}
+function show_description(point){
+    function on_click(){
+        move_map_for_point(point);
+    }
+    document.getElementById('popup_title').innerText=point.title;
+    document.getElementById('popup_info').innerHTML=point.description;
+    document.getElementById('popup_button_move_map').addEventListener("click", on_click);
     reduce_popup();
     document.getElementById('popup').style.display='block';
+
+    let width = window.innerWidth;
+    let height = window.innerHeight;
+    map1.panInside([point.latitude,point.longitude], {paddingTopLeft : [width *0.2, height *0.1], paddingBottomRight: [width *0.2, height *0.4]});
+    map2.panInside([point.latitude,point.longitude], {paddingTopLeft : [width *0.2, height *0.1], paddingBottomRight: [width *0.2, height *0.4]});
+    map3.panInside([point.latitude,point.longitude], {paddingTopLeft : [width *0.2, height *0.1], paddingBottomRight: [width *0.2, height *0.4]});
+    map4.panInside([point.latitude,point.longitude], {paddingTopLeft : [width *0.2, height *0.1], paddingBottomRight: [width *0.2, height *0.4]});
 }
 
 fetch('data.json').then(response => {
     response.json().then(points => {
         points.forEach(point => {
             function on_click(){
-                show_description(point.title,point.description);
+                show_description(point);
             }
             marker1 = L.marker([point.latitude,point.longitude],{'icon':ICONS[point.year]}).addTo(map1).on('click',on_click);
             marker2 = L.marker([point.latitude,point.longitude],{'icon':ICONS[point.year]}).addTo(map2).on('click',on_click);
@@ -324,7 +457,7 @@ var popup_is_enlarged=false;
 function enlarge_popup(){
     popup_is_enlarged=true;
     document.getElementById('popup').style.top='20%';
-    document.getElementById('popup').style.bottom='10%';
+    //document.getElementById('popup').style.bottom='10%';
     document.getElementById('popup_button_resize').className='fleche-bas';
 }
 function reduce_popup(){
